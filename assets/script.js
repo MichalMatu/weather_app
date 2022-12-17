@@ -46,16 +46,13 @@ function display_weather(city) {
                         var forecast = $('#forecast');
 
                         forecast.html(' ');
-
-
-                        forecast.before(`<div class='row'><h4>5-Day Forecast:</4></div>`);
-
+                        forecast.append(`<div class='container'><h4>5-Day Forecast:</4></div>`);
 
                         for (i = 8; i < data_forecast.list.length; i++) {
                             forecast.append(`
                         <div class="card" style="width: 12rem;">
                         <div class="card-body">
-                        <h5 class="card-title">${data_forecast.list[i].dt_txt.substring(0, 10)}</h5>
+                        <h5 class="card-title">${data_forecast.list[i].dt_txt.substring(0, 10).replaceAll('-', '/')}</h5>
                         <h6 class="card-title">${data_forecast.list[i].dt_txt.substring(11, 16)}</h6>
                         <p><img src='${icon_link}${data_forecast.list[i].weather[0].icon}.png'></p>
                         <p class="card-text">Temp: ${Math.round(data_forecast.list[i].main.temp)} &#8451;</p>
@@ -69,11 +66,11 @@ function display_weather(city) {
                     })
 
 
-                    if (!btn_city.includes(data.name) || btn_city.length == 0) {
+                if (!btn_city.includes(data.name) || btn_city.length == 0) {
                     btn_city.push(data.name);
                     history_btn(data.name);
-                     }
-});
+                }
+            });
 
 
     } else {
