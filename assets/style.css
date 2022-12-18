@@ -16,6 +16,8 @@
 }
 
 .card {
+    /* create transparent background */
+    background: transparent !important;
     border: 0px !important;
     margin: 0 auto;
     width: 100%;
@@ -23,6 +25,8 @@
     padding: 5px;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .card-body {
@@ -31,4 +35,29 @@
     padding: 0px;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 8px;
+    /* create hover effect when mouse over make it fade */
+    transition: 0.5s;
 }
+
+.card-body:hover {
+    background: rgb(5, 61, 61, 0.5);
+}
+
+header {
+    background: linear-gradient(210deg, rgba(2,0,36,1) 0%, rgb(35, 35, 73) 0%, rgb(40, 78, 85) 100%);
+    color: white;
+    padding: 0px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+body {
+    background: #81879e !important;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+}
+
+
+
