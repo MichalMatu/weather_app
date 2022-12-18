@@ -88,6 +88,37 @@ function history_btn(city) {
         display_weather(city);
     });
 }
+// store history buttons in local storage and get them back then display it with button to clear the history
+
+
+$(document).ready(function () {
+    var history = $('#history');
+    var btn_clear = $(`<button type="button" class="btn btn-secondary btn-sm">Clear History</button>`);
+    history.append(btn_clear);
+    btn_clear.on('click', function (event) {
+        event.preventDefault();
+        history.html(' ');
+        btn_city = [];
+        localStorage.clear();
+    });
+
+    var stored_city = JSON.parse(localStorage.getItem('city'));
+    if (stored_city !== null) {
+        btn_city = stored_city;
+        for (i = 0; i < btn_city.length; i++) {
+            history_btn(btn_city[i]);
+        }
+    }
+}
+);
+
+// store the history buttons in local storage
+$(window).on('unload', function () {
+localStorage.setItem('city', JSON.stringify(btn_city));
+});
+
+
+
 
 
 
