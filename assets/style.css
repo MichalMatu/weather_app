@@ -1,0 +1,34 @@
+.btn-secondary {
+    margin: 5px;
+}
+
+.btn-primary {
+    margin-left: 10px;
+}
+
+.container_top {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.card {
+    border: 0px !important;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    padding: 5px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 8px;
+}
+
+.card-body {
+    background: rgb(5, 61, 61); 
+    color: white;
+    padding: 0px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 8px;
+}
