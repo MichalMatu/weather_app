@@ -71,11 +71,7 @@ function display_weather(city) {
                     history_btn(data.name);
                 }
             });
-
-        // if city name is empty string - alert to enter city name
-    } else {
-        alert('Enter city name');
-    }
+    } 
 }
 
 // store city name in local storage and append it to the history div as clickable button
@@ -86,7 +82,7 @@ function history_btn(city) {
 }
 
 // get the data from local storage and call display_weather function
-function get_history() {
+function get_history(city) {
     var city = JSON.parse(localStorage.getItem('city'));
     if (city) {
         btn_city = city;
@@ -100,8 +96,19 @@ function get_history() {
 // get the history div and add event listener to it
 
 $('#history').on('click', function (event) {
+    event.preventDefault();
     var city = event.target.textContent;
     display_weather(city);
+});
+
+// when right click on the history button remove it from the array and local storage
+$('#history').on('contextmenu', function (event) {
+    event.preventDefault();
+    var city = event.target.textContent;
+    var index = btn_city.indexOf(city);
+    btn_city.splice(index, 1);
+    localStorage.setItem('city', JSON.stringify(btn_city));
+    event.target.remove();
 });
 
 // call get_history function
