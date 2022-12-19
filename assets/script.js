@@ -79,6 +79,10 @@ function history_btn(city) {
     localStorage.setItem('city', JSON.stringify(btn_city));
     var history = $('#history');
     history.append(`<button class='btn btn-secondary btn-block'>${city}</button>`);
+    // if the history div has more than 10 buttons remove the first one
+    if (history.children().length > 10) {
+        history.children().first().remove();
+    }
 }
 
 // get the data from local storage and call display_weather function
