@@ -77,45 +77,41 @@ function display_weather(city) {
         alert('Enter city name');
     }
 }
-// function to create history buttons
+
+// store city name in local storage and append it to the history div as clickable button
 function history_btn(city) {
-    // get the history div and create button with the city name and append it to the history div
+    localStorage.setItem('city', JSON.stringify(btn_city));
     var history = $('#history');
-    var btn = $(`<button type="button" class="btn btn-secondary btn-sm">${city}</button>`);
-    history.append(btn);
-    btn.on('click', function (event) {
-        event.preventDefault();
-        display_weather(city);
-    });
+    history.append(`<button class='btn btn-secondary btn-block'>${city}</button>`);
 }
-// store history buttons in local storage and get them back then display it with button to clear the history
 
-
-$(document).ready(function () {
-    var history = $('#history');
-    var btn_clear = $(`<button type="button" class="btn btn-secondary btn-sm">Clear History</button>`);
-    history.append(btn_clear);
-    btn_clear.on('click', function (event) {
-        event.preventDefault();
-        history.html(' ');
-        btn_city = [];
-        localStorage.clear();
-    });
-
-    var stored_city = JSON.parse(localStorage.getItem('city'));
-    if (stored_city !== null) {
-        btn_city = stored_city;
-        for (i = 0; i < btn_city.length; i++) {
-            history_btn(btn_city[i]);
+// get the data from local storage and call display_weather function
+function get_history() {
+    var city = JSON.parse(localStorage.getItem('city'));
+    if (city) {
+        btn_city = city;
+        for (i = 0; i < city.length; i++) {
+            history_btn(city[i]);
         }
+        display_weather(city[city.length - 1]);
     }
 }
-);
 
-// store the history buttons in local storage
-$(window).on('unload', function () {
-localStorage.setItem('city', JSON.stringify(btn_city));
+// get the history div and add event listener to it
+
+$('#history').on('click', function (event) {
+    var city = event.target.textContent;
+    display_weather(city);
 });
+
+// call get_history function
+get_history();
+
+
+
+
+
+
 
 
 
