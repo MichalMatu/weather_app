@@ -71,7 +71,7 @@ function display_weather(city) {
                     history_btn(data.name);
                 }
             });
-    } 
+    }
 }
 
 // store city name in local storage and append it to the history div as clickable button
@@ -102,17 +102,23 @@ function get_history(city) {
 $('#history').on('click', function (event) {
     event.preventDefault();
     var city = event.target.textContent;
-    display_weather(city);
+
+    // if the city name is less than 28 characters call display_weather function
+    if (city.length < 28) {
+        display_weather(city);
+    }
 });
 
 // when right click on the history button remove it from the array and local storage
 $('#history').on('contextmenu', function (event) {
     event.preventDefault();
     var city = event.target.textContent;
+    if (city.length < 28) {
     var index = btn_city.indexOf(city);
     btn_city.splice(index, 1);
     localStorage.setItem('city', JSON.stringify(btn_city));
     event.target.remove();
+    }
 });
 
 // call get_history function
