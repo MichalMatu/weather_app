@@ -8,7 +8,7 @@ var current_date = moment().format('DD/MM/YYYY');
 // API key
 var api_key = 'ff063c2259903253352ff5af1c451860';
 
-var icon_link = 'https://openweathermap.org/img/wn/'
+var icon_link = 'http://openweathermap.org/img/wn/'
 // get the search input, search button and history button array
 var search_button = $('#search-button');
 var search_input = $('#search-input');
