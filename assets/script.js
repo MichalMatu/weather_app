@@ -102,7 +102,7 @@ function get_history(city) {
 $('#history').on('click', function (event) {
     event.preventDefault();
     var city = event.target.textContent;
-
+    console.log(city.length);
     // if the city name is less than 28 characters call display_weather function
     if (city.length < 28) {
         display_weather(city);
@@ -123,6 +123,10 @@ $('#history').on('contextmenu', function (event) {
 
 // call get_history function
 get_history();
+
+// 
+
+
 
 
 
